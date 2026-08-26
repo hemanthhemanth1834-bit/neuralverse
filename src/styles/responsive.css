@@ -1,0 +1,366 @@
+/* ============================================================
+   RESPONSIVE — mobile-first adjustments per breakpoint
+   ============================================================ */
+
+/* ---------- ≤ 1024px : tablet landscape / small laptop ---------- */
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    max-width: 560px;
+  }
+
+  .journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+
+  .project.flip .project-media {
+    order: 0;
+  }
+
+  .project-index {
+    font-size: clamp(2.6rem, 9vw, 3.6rem);
+  }
+}
+
+/* ---------- ≤ 880px : tablet portrait — nav collapses ---------- */
+@media (max-width: 880px) {
+  :root {
+    --nav-h: 66px;
+  }
+
+  .nav-links,
+  .nav-cta-desktop {
+    display: none;
+  }
+
+  .nav-burger {
+    display: flex;
+  }
+}
+
+/* ---------- ≤ 768px : tablet portrait ---------- */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cert-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+  }
+}
+
+/* ---------- ≤ 640px : large phones ---------- */
+@media (max-width: 640px) {
+  .section {
+    padding-block: clamp(4rem, 12vh, 6rem);
+  }
+
+  .hero {
+    padding-bottom: 6rem;
+  }
+
+  .hero-content {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+  }
+
+  .hero-ctas .btn {
+    padding-inline: 1.35rem;
+  }
+
+  .hero-socials {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+
+  .float-badge.f3 {
+    display: none;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-panel {
+    padding: clamp(1.6rem, 4vw, 2.4rem);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-copy {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .tl-item::before {
+    left: -1.5rem;
+  }
+
+  .timeline::before {
+    left: 5px;
+  }
+
+  .timeline .progress {
+    left: 5px;
+  }
+}
+
+/* ---------- ≤ 480px : medium phones ---------- */
+@media (max-width: 480px) {
+  .hero-intro {
+    font-size: 0.95rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-socials {
+    justify-content: flex-start;
+  }
+
+  .profile-card {
+    padding: 1.2rem;
+  }
+
+  .skill-cluster {
+    padding: 1.2rem;
+  }
+
+  .cert-card {
+    padding: 1.1rem;
+  }
+
+  .glass-card {
+    border-radius: var(--radius-md);
+  }
+}
+
+/* ---------- ≤ 400px : small phones ---------- */
+@media (max-width: 400px) {
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .hero-socials .icon-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .project-highlights li::before {
+    top: 0.45em;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mobile-menu a {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+}
+
+/* ---------- ≤ 375px : iPhone SE / small ---------- */
+@media (max-width: 375px) {
+  :root {
+    --fs-hero: clamp(1.8rem, 8vw, 2.4rem);
+    --fs-h2: clamp(1.5rem, 5vw, 2.2rem);
+    --fs-h3: clamp(1.1rem, 3vw, 1.35rem);
+  }
+
+  .hero {
+    min-height: auto;
+    padding-block: calc(var(--nav-h) + 1.5rem) 4rem;
+  }
+
+  .hero-content {
+    gap: 1rem;
+  }
+
+  .section-head {
+    margin-bottom: 2rem;
+  }
+}
+
+/* ---------- ≤ 320px : very small phones ---------- */
+@media (max-width: 320px) {
+  :root {
+    --fs-hero: clamp(1.5rem, 7vw, 2rem);
+    --fs-body: 0.88rem;
+  }
+
+  .container {
+    width: 92vw;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.4rem, 9vw, 1.8rem);
+  }
+
+  .hero-role {
+    font-size: 0.68rem;
+  }
+
+  .hero-intro {
+    font-size: 0.88rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.2rem;
+    font-size: 0.88rem;
+  }
+
+  .mobile-menu {
+    padding: calc(var(--nav-h) + 1rem) 1.2rem 2rem;
+  }
+}
+
+/* ---------- ≥ 1280px : desktop ---------- */
+@media (min-width: 1280px) {
+  .hero-content {
+    max-width: 800px;
+  }
+}
+
+/* ---------- ≥ 1600px : ultra-wide breathing room ---------- */
+@media (min-width: 1600px) {
+  :root {
+    --container: min(1220px, 82vw);
+    --container-wide: min(1420px, 86vw);
+  }
+}
+
+/* ---------- ≥ 1920px : large screens ---------- */
+@media (min-width: 1920px) {
+  .hero-content {
+    max-width: 860px;
+  }
+
+  .project {
+    max-width: 100%;
+  }
+}
+
+/* ---------- ≥ 2200px : ultra-wide ---------- */
+@media (min-width: 2200px) {
+  :root {
+    --fs-hero: clamp(2.6rem, 4.2vw, 6.2rem);
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION — keep everything usable, calm the visuals
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .bg-blob,
+  .float-badge,
+  .loader-mark .hex-outer,
+  .loader-mark .hex-inner,
+  .contact-orb::before {
+    animation: none !important;
+  }
+
+  .scroll-cue .track i {
+    animation: none !important;
+  }
+
+  .project:hover .project-media {
+    transform: none;
+  }
+
+  .project-media .sweep {
+    display: none;
+  }
+}
+
+/* ============================================================
+   LANDSCAPE — ensure mobile landscape works well
+   ============================================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding-block: calc(var(--nav-h) + 1rem) 2rem;
+  }
+
+  .mobile-menu {
+    align-content: start;
+    padding-top: calc(var(--nav-h) + 1rem);
+  }
+
+  .mobile-menu a {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+}
+
+/* ============================================================
+   HIGH CONTRAST / FORCED COLORS
+   ============================================================ */
+@media (forced-colors: active) {
+  .btn-primary {
+    border: 2px solid ButtonText;
+  }
+
+  .glass-card {
+    border: 1px solid ButtonText;
+  }
+
+  :focus-visible {
+    outline: 3px solid Highlight;
+    outline-offset: 3px;
+  }
+}
