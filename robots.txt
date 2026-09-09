@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neuralverse.dev/sitemap.xml
+Sitemap: https://hemanthhemanth1834-bit.github.io/neuralverse/sitemap.xml
