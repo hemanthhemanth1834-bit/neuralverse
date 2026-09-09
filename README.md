@@ -1,5 +1,7 @@
 # NEURALVERSE — Interactive AI Universe
 
+**Live site:** https://hemanthhemanth1834-bit.github.io/neuralverse/
+
 > "Where intelligence becomes an experience." A cinematic, immersive 3D AI universe
 > built by **Muchakarla Hemanth Kumar** (B.Tech CSE — AI/ML, 2024–2028, SRK Institute of Technology).
 
