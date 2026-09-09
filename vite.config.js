@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
+  // Project site lives under /neuralverse/ on GitHub Pages — keep asset URLs relative to it.
+  base: '/neuralverse/',
   plugins: [react()],
   server: {
     host: true,
