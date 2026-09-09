@@ -12,12 +12,15 @@ export default defineConfig({
     allowedHosts: true
   },
   build: {
+    target: 'es2020',
+    sourcemap: false,
+    chunkSizeWarningLimit: 1200,
     rollupOptions: {
       output: {
         manualChunks: {
           react: ['react', 'react-dom'],
           three: ['three', '@react-three/fiber', '@react-three/drei'],
-          motion: ['framer-motion']
+          motion: ['framer-motion', 'gsap', 'lenis']
         }
       }
     }

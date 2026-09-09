@@ -1,81 +1,100 @@
-# Muchakarla Hemanth Kumar — Premium Portfolio
+# NEURALVERSE — Interactive AI Universe
 
-A cinematic, award-style personal portfolio built strictly from Hemanth's verified professional
-record: AI/ML engineering student at SRK Institute of Technology, internships at CodeAlpha,
-Codomax Digital Solutions and CodSoft, Tata & Deloitte enterprise job simulations (Forage),
-and ten certifications across Python (Cisco/OpenEDG), AWS Cloud, Generative AI (NASSCOM)
-and Cybersecurity.
+> "Where intelligence becomes an experience." A cinematic, immersive 3D AI universe
+> built by **Muchakarla Hemanth Kumar** (B.Tech CSE — AI/ML, 2024–2028, SRK Institute of Technology).
 
-## Highlights
-
-- **Premium loader** — animated MHK monogram with progress phases
-- **Interactive 3D hero** — a "neural core" lattice with particle shell and orbit ring
-  (Three.js via @react-three/fiber), reacting to pointer and scroll
-- **Light / dark themes** — persisted to localStorage, respects `prefers-color-scheme`
-- **Custom cursor** — dot + lagging ring with contextual states (fine pointers only)
-- **Magnetic buttons, tilt cards, glass surfaces, animated gradient edges**
-- **Scroll experience** — progress bar, section reveals, timeline progress, parallax blobs
-- **Storytelling projects section** — alternating editorial layouts with animated
-  data-visualisation artwork per engagement
-- **Accessible & honest** — semantic HTML, keyboard navigation, focus styles, ARIA where
-  needed, full `prefers-reduced-motion` support; the contact form opens your email client
-  (`mailto:`) and claims nothing more
-
-## Stack
-
-- React 19 + Vite 6
-- Three.js via @react-three/fiber (lazy-loaded; drei no longer used)
-- Framer Motion 12 (`MotionConfig reducedMotion="user"` globally)
-- Hand-written modular CSS design system — no UI framework
+## Project structure
 
 ```
 src/
-├── main.jsx / App.jsx        # composition root
-├── index.css                 # imports the style layers below
-├── styles/                   # variables · base · components · sections · responsive
-├── data/resume.js            # SINGLE SOURCE OF TRUTH for all content
-├── hooks/useReducedMotion.js
-├── components/               # Loader, Cursor, Navbar, ScrollProgress, Background,
-│                             # Reveal, Magnetic, TiltCard, Scene3D, icons
-└── sections/                 # Hero, About, Skills, Journey, Work,
-                              # Certifications (+Achievements), Contact, Footer
+  App.tsx                  # composition + cinematic scroll choreography + atmosphere
+  main.tsx                 # entry
+  components/              # CinematicIntro, Cursor, Navigation, MagneticButton,
+                           # SectionHeading, SceneCanvas, BrandIcons, ErrorBoundary, WebGLFallback
+  sections/                # Hero, Brain, Universe, Assistant, Projects, MissionControl,
+                           # Future, Skills, About, Contact, Finale
+  scenes/                  # NeuralCore, BrainScene, UniverseScene, FutureScene, SkillsConstellation (R3F)
+  shaders/materials.ts     # particle / hologram / energy-line GLSL + glow texture
+  data/                    # projects.ts, universe.ts (nodes, regions, skills, demo answers)
+  hooks/useDevice.ts       # device tier / touch / reduced-motion / WebGL detection
+  lib/                     # gsap-setup, smooth-scroll (Lenis)
+  utils/device.ts          # capability helpers + particle budgets
+  styles/globals.css       # Tailwind v4 tokens + grain, grid, glass, holo effects
+public/robots.txt  public/sitemap.xml  .env.example
 ```
 
-## Quick Start
+## Installation / development / build
 
 ```bash
 npm install
-npm run dev        # http://localhost:5173
+npm run dev      # local dev (Vite, network-exposed)
+npm run build    # production build -> dist/
+npm run preview  # preview the production build
 ```
 
-## Production Build
+## Deployment (Vercel)
 
-```bash
-npm run build      # emits dist/
-npm run preview    # serve the production build locally
-```
+1. Push this folder to a Git repo (ensure `.env` is **never** committed — only `.env.example`).
+2. Vercel → New Project → import repo. Framework preset: **Vite**.
+3. Build command: `npm run build` · Output dir: `dist`.
+4. No environment variables required (demo mode). Optionally set `VITE_AI_PROXY_URL`
+   to a **backend** proxy URL for live assistant inference (see below).
+5. Deploy. `public/robots.txt` + `public/sitemap.xml` ship automatically.
 
-The Three.js scene is code-split into its own chunk and only fetched after the loader
-completes. Particle counts and geometry simplify automatically on small screens or
-low-core devices.
+## Environment variables
 
-## Content Source of Truth
+| Var | Purpose |
+|---|---|
+| `VITE_AI_PROXY_URL` | Optional backend proxy for the AI assistant. Leave empty = local demo mode. **Never** put real API keys in `VITE_*` vars — they ship to the browser. |
+| `VITE_SITE_URL` | Canonical URL for metadata. |
+| `VITE_DEMO_MODE` | `true` = force demo answers. |
 
-Everything on the site renders from `src/data/resume.js`. Nothing is invented — no fake
-projects, employers, statistics, testimonials or links. To add real personal projects,
-a GitHub URL, resume PDF download or live demos later:
+Copy `.env.example` → `.env` for local experiments.
 
-1. Add them to the `work` array (or `profile.github`) in `src/data/resume.js`
-2. Render links in `src/sections/Work.jsx` / `Hero.jsx`
+## Major 3D systems
 
-## Customization
+- **NeuralCore** (`scenes/NeuralCore.tsx`): procedural sphere-cluster particles (320–1800 by
+  device tier) with custom GLSL point shader (turbulence + twinkle + distance fade), O(n)
+  pseudo-neighbor link web, travelling "comet" pulses, holographic icosahedron heart,
+  mouse-parallax + idle camera drift.
+- **BrainScene**: ellipsoid particle cortex with hemispheric fissure + sulci wobble; every
+  particle colored by nearest of 5 region centers (Vision/Language/Reasoning/Memory/
+  Generative). Region cores are raycastable meshes — hover boosts nearby particle
+  brightness, click selects.
+- **UniverseScene**: 11 knowledge nodes on a Fibonacci shell, link web from data, 90 energy
+  pulses lerping along edges, HTML labels, click-to-open dossier panel.
+- **FutureScene**: scroll-driven (`progress` 0→1) camera flight through 12 additive torus
+  rings + 4 emissive wireframe monoliths (AI/robotics/cloud/spatial) + dust field.
+- **SkillsConstellation**: 14 skill stars on a disc + center hub, category colors, honest
+  depth labels (no fake percentages).
 
-- **Colors / radii / motion** → `src/styles/variables.css` (both themes are token-driven)
-- **Section copy** → the matching file in `src/sections/`
-- **SEO + structured data** → `index.html` (update the canonical URL when deploying)
+All scenes share `SceneCanvas` (adaptive DPR `[0.7, 1.75]`, optional Bloom+Vignette —
+bloom disabled on low tier), procedural canvas glow textures (zero external assets),
+and per-frame cleanup via R3F disposal.
 
-## Contact Form
+## Animation system
 
-Uses a validated `mailto:` handler — it opens the visitor's email app pre-filled to
-hemanthhemanth1834@gmail.com. To wire a real backend (Formspree, Resend, your API),
-replace the `onSubmit` handler in `src/sections/Contact.jsx`.
+- **Intro**: 2D-canvas neural formation + GSAP timeline (logo blur-in, masked lines,
+  progress bar, phase readout), Skip + Esc/Enter, ~6.8s (1.2s reduced-motion).
+- **Scroll**: Lenis smooth scroll + GSAP ScrollTrigger section crossfades, per-section
+  reveals (`SectionHeading`), Finale collapse timeline, narrative rail + interstitials
+  (Scenes 01–11) for continuous story.
+- **Micro**: magnetic buttons, cursor morph + labels, dossier transitions (Framer Motion),
+  animated counters/sparklines in Mission Control, hover glow borders.
+
+## Performance optimizations
+
+- Device-tier budgets (low 320 / med 900 / high 1800 particles), bloom off on low,
+  `multisampling={0}`, `antialias:false`, capped DPR.
+- `React.lazy` + `Suspense` per 3D scene, `ErrorBoundary` + WebGL detection + 2D fallback.
+- O(n) link generation (no O(n²) neighbor search), instanced-style single-draw Points,
+  throttled state updates, `prefers-reduced-motion` kill-switches (camera, particles,
+  Lenis, cursor), semantic HTML + keyboard/focus/ARIA throughout.
+
+## Free resources used
+
+React, TypeScript, Vite, Three.js, React Three Fiber, @react-three/drei,
+@react-three/postprocessing + postprocessing, GSAP + ScrollTrigger, Lenis,
+Tailwind CSS v4, Framer Motion, Lucide icons (brand glyphs redrawn inline as SVG),
+Google Fonts (Space Grotesk / Inter / JetBrains Mono, system fallback offline).
+All 3D is procedural — no paid models, templates, or APIs.

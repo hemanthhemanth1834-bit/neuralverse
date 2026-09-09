@@ -1,7 +1,0 @@
-/* Entry stylesheet — design system composed from modular layers.
-   Order matters: tokens → base → components → sections → responsive. */
-@import './styles/variables.css';
-@import './styles/base.css';
-@import './styles/components.css';
-@import './styles/sections.css';
-@import './styles/responsive.css';
