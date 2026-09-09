@@ -1,0 +1,7 @@
+run = "npm run dev"
+entrypoint = "index.html"
+modules = ["nodejs-22"]
+
+[[ports]]
+localPort = 5173
+externalPort = 80
